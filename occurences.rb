@@ -1,7 +1,6 @@
 @occurences = Hash.new(0)
 def characterCount(input_string)
 	input_string.each_char do |character|
-		#puts character
 		if character != " " 
 			@occurences[character] += 1
 		end
