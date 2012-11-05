@@ -6,7 +6,7 @@ def createHash(input_array)
 end
 
 input_array = ['abc','def',1234,234,'abcd','x','mnop',5,'zZzZ'] 
-createHash(input_aray)
+createHash(input_array)
 @occurences.each do |key, value|
   puts "#{key} => #{value}"
 end
