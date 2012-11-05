@@ -1,9 +1,9 @@
 class Vehicle
-  attr_accessor:name, :price
+	attr_accessor:name, :price
   def initialize(name, price)
-    @name = name
+		@name = name
     @price = 60000
-  end
+	end
   def displayDetails()
     puts "Bike is #{@name}  Price: Rs. #{@price}"
   end
