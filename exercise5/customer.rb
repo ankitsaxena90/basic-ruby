@@ -15,7 +15,7 @@ class Customer
 	def withdraw(amount)
 		@balance -= amount
 	end
-  
+	
 	def displayDetails
 		puts "Name: #{@name}  Account Number: #{@account_no}  Balance: #{@balance}"
 	end
