@@ -11,12 +11,12 @@ end
 
 class Bike < Vehicle
   attr_accessor:price
-	def initialize(name, price, dealer)
+  def initialize(name, price, dealer)
     super(name, price)
-		@dealer = dealer
-	end
+    @dealer = dealer
+  end
 
-	def displayDetails()
-		puts "Bike is #{@name}  Price: Rs. #{@price}  Dealer:#{@dealer}"
-	end
+  def displayDetails()
+    puts "Bike is #{@name}  Price: Rs. #{@price}  Dealer:#{@dealer}"
+  end
 end
