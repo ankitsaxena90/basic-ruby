@@ -39,7 +39,7 @@ $time = Time.parse(gets.chomp)
 time1 = $time.strftime("%H:%M:%S")
 validateTime(time1)
 
-puts "Enter the limit for SUM TIME"
+puts "Enter the limit(Number of TIME values to be added to the current time)"
 limit = gets.chomp
 
 addtime = []
