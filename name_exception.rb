@@ -8,4 +8,4 @@ class Name
 	end
 end
 
-name_obj = Name.new("Ankit","Saxena")
+name_obj = Name.new("","")
