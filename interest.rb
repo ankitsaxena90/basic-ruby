@@ -15,6 +15,6 @@ class Interest
 	end
 end
 
-	interest1 = Interest.new(5000, 2)
-	amount_difference = interest1.compoundInterest - interest1.simpleInterest
-	puts "Difference in amount calculated compoundedly and simply is #{amount_difference}"
+interest1 = Interest.new(5000, 2)
+amount_difference = interest1.compoundInterest - interest1.simpleInterest
+puts "Difference in amount calculated compoundedly and simply is #{amount_difference}"
