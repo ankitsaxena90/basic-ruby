@@ -11,7 +11,7 @@ class Interest
 	end
 
 	def compoundInterest
-		return @principal * (1 + @@rate/100) ** @time
+		return @principal * (1 + @@rate / 100) ** @time
 	end
 end
 
