@@ -1,7 +1,7 @@
 require_relative './array-hash'
 
-def generateHash(input_array)
-  hash = createHash(input_array)
+def generate_hash(input_array)
+  hash = create_hash(input_array)
   container_hash = {}
   container_hash['even'] = []
   container_hash['odd'] = []
@@ -17,4 +17,4 @@ end
 
 
 input_array = ['abc','def',1234,234,'abcd','x','mnop',5,'zZzZ'] 
-puts generateHash(input_array)
+puts generate_hash(input_array)

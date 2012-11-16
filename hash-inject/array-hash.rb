@@ -1,7 +1,7 @@
-@occurences = Hash.new(Array.new())
-def createHash(input_array)
+def create_hash(input_array)
+  occurences = Hash.new(Array.new())
   for i in input_array
-    @occurences[i.to_s.length] += [i]
+    occurences[i.to_s.length] += [i]
   end
-  @occurences
+  occurences
 end
