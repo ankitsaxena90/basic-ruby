@@ -1,5 +1,8 @@
 def factorial(number)
-  (1..number).inject { |fact, var| fact * var }
+  if number == 0
+    return 1
+  end
+  return (1..number).inject { |fact, var| fact * var }
 end
 
 def check_digit(input_number) 
