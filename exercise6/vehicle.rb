@@ -4,7 +4,7 @@ class Vehicle
     @name = name
     @price = 60000
   end
-  def displayDetails()
+  def display_details()
     puts "Bike is #{@name}  Price: Rs. #{@price}"
   end
 end
@@ -16,7 +16,7 @@ class Bike < Vehicle
     @dealer = dealer
   end
 
-  def displayDetails()
+  def display_details()
     puts "Bike is #{@name}  Price: Rs. #{@price}  Dealer:#{@dealer}"
   end
 end
