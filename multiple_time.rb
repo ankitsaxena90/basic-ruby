@@ -3,14 +3,14 @@ $time = 0
 $day = 0
 $final_time
 
-def validateTime(time)
+def validate_time(time)
 	pattern = /^(\d day & )?([0-1]?\d)|(2?[0-3]):[0-5]?\d:[0-5]?\d$/
 	if time.match(pattern)
-		puts "Valid date"
+		return true
 	else
 		puts "Invalid Time"
+		return false
 	end
-	return true
 end
 
 def time_calculation(time,addtime)
@@ -26,7 +26,7 @@ def time_calculation(time,addtime)
 	
 	new_time = "#{$day} day & #{cur_hor}:#{cur_min}:#{cur_sec}"
 	
-	if(validateTime(new_time))
+	if(validate_time(new_time))
 		$final_time =  new_time
 		$time = Time.parse(new_time)
 	else
@@ -37,7 +37,7 @@ end
 puts "Enter current time(HH:MM:SS)"
 $time = Time.parse(gets.chomp)
 time1 = $time.strftime("%H:%M:%S")
-validateTime(time1)
+validate_time(time1)
 
 puts "Enter the limit(Number of TIME values to be added to the current time)"
 limit = gets.chomp
@@ -47,7 +47,7 @@ limit.to_i.times do |i|
 	puts "Enter the time to add(HH:MM:SS)"
 	addtime.push(Time.parse(gets.chomp))
 	time2 = addtime[i].strftime("%H:%M:%S")
-	validateTime(time2)
+	validate_time(time2)
 end
 addtime.each_with_index { |a, i| time_calculation($time, addtime[i])}
 	puts "Final Time is"
