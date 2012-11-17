@@ -1,6 +1,14 @@
-require './vehicle'
+require_relative './vehicle'
 
-bike1 = Bike.new('Pulsar',95000,'Bajaj Automobiles')
-bike1.display_details()
-bike1.price = 80000
-bike1.display_details()
+class Bike < Vehicle
+  attr_accessor:price
+  def initialize(name, price, dealer)
+    super(name, price)
+    @dealer = dealer
+  end
+
+  def display_details()
+    puts "Bike is #{@name}  Price: Rs. #{@price}  Dealer:#{@dealer}"
+  end
+end
+
