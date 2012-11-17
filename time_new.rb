@@ -1,6 +1,6 @@
 require 'time'
 
-def validateTime(time)
+def validate_time(time)
 	pattern = /^(\d day & )?([0-1]?\d)|(2?[0-3]):[0-5]?\d:[0-5]?\d$/
 	if time.match(pattern)
 		return true
@@ -22,7 +22,7 @@ def time_calculation(time,addtime)
 	
 	new_time = "#{day} day & #{cur_hor}:#{cur_min}:#{cur_sec}"
 	
-	if(validateTime(new_time))
+	if(validate_time(new_time))
 		puts new_time
 	else
 		puts "Invalid Time"
@@ -32,11 +32,11 @@ end
 puts "Enter current time(HH:MM:SS)"
 time = Time.parse(gets.chomp)
 time1 = time.strftime("%H:%M:%S")
-validateTime(time1)
+validate_time(time1)
 
 puts "Enter time to add(HH:MM:SS)"
 addtime = Time.parse(gets.chomp)
 time2 = addtime.strftime("%H:%M:%S")
-validateTime(time2)
+validate_time(time2)
 
 time_calculation(time,addtime)
