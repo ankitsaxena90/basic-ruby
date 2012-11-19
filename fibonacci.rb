@@ -1,12 +1,12 @@
 def fibonacci(limit)
   second = first = 1
-  print first, " ", second, " "
-  until first + second > limit do
-    yield(first,second)
-    first , second = second, first + second
+  print 1, " "
+  until second > limit do
+    first , second = second, yield(first, second)
+    print first, " "
   end
 end
 
 
-fibonacci(1000) { |n1,n2| print n1 + n2, " " }
+fibonacci(1000) { |n1,n2| n1 + n2}
 puts
