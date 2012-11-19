@@ -1,7 +1,7 @@
 def search(input_string, input_word)
   search_pattern = /#{input_word}/i
   count = 0
-  puts input_string.gsub(/#{input_word}/i) {|match| 
+  puts input_string.gsub(search_pattern) {|match| 
     count += 1
     "(#{match})"
   }
