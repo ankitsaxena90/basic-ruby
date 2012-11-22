@@ -1,7 +1,7 @@
 def area(*args)
   case args.length
   when 1
-    area =  3.14 * args[0] * args[0]
+    area = (Math::PI * args[0]).round(2)
     puts "Area of Circle is #{area}"
 
   when 2
