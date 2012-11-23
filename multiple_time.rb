@@ -1,7 +1,4 @@
 require 'time'
-$time = 0
-$day = 0
-$final_time
 
 def validate_time(time)
   pattern = /^(\d day & )?([0-1]?\d)|(2?[0-3]):[0-5]?\d:[0-5]?\d$/
@@ -9,45 +6,41 @@ def validate_time(time)
     return true
   else
     puts "Invalid Time"
-    return false
+    exit(0)
   end
 end
 
-def time_calculation(time,addtime)
-  min_in_sec = (time.sec.to_i + addtime.sec.to_i) / 60
-  cur_sec = (time.sec.to_i + addtime.sec.to_i) % 60
-  
-  hor_in_min = (time.min.to_i + addtime.min.to_i + min_in_sec) / 60
-  cur_min = (time.min.to_i + addtime.min.to_i + min_in_sec) % 60
-  
-  cur_hor = (time.hour.to_i + addtime.hour.to_i + hor_in_min) % 24
-  $day += (time.hour.to_i + addtime.hour.to_i + hor_in_min) / 24
-  
-  new_time = "#{$day} day & #{cur_hor}:#{cur_min}:#{cur_sec}"
-  
-  if(validate_time(new_time))
-    $final_time =  new_time
-    $time = Time.parse(new_time)
-  else
-    puts "Invalid Time"
+def time_calculation(time)
+  day = 0
+  cur_hour = 0
+  cur_min = 0
+  cur_sec = 0
+
+  time.length.times do |i|
+    temp_time = time[i]
+
+    min_in_sec = (cur_sec + temp_time.sec.to_i) / 60
+    cur_sec = (cur_sec + temp_time.sec.to_i) % 60
+    
+    hour_in_min = (cur_min + temp_time.min.to_i + min_in_sec) / 60
+    cur_min = (cur_min + temp_time.min.to_i + min_in_sec) % 60
+
+    day += (cur_hour + temp_time.hour.to_i + hour_in_min) / 24
+    cur_hour = (cur_hour + temp_time.hour.to_i + hour_in_min) % 24 
   end
+  new_time = "#{day} day & #{cur_hour}:#{cur_min}:#{cur_sec}" 
 end
 
-puts "Enter current time(HH:MM:SS)"
-$time = Time.parse(gets.chomp)
-time1 = $time.strftime("%H:%M:%S")
-validate_time(time1)
-
-puts "Enter the limit(Number of TIME values to be added to the current time)"
-limit = gets.chomp
-
-addtime = []
-limit.to_i.times do |i|
+puts "Enter the limit(Number of times you want to add TIME values) :"
+limit = gets.chomp.to_i
+addTime = []
+limit.times do |i|
   puts "Enter the time to add(HH:MM:SS)"
-  addtime.push(Time.parse(gets.chomp))
-  time2 = addtime[i].strftime("%H:%M:%S")
+  addTime.push(Time.parse(gets.chomp))
+  time2 = addTime[i].strftime("%H:%M:%S")
   validate_time(time2)
 end
-addtime.each_with_index { |a, i| time_calculation($time, addtime[i])}
-  puts "Final Time is"
-  puts $final_time
+
+final_time = time_calculation(addTime)
+
+puts "Final Time is :#{final_time}" if validate_time(final_time)
