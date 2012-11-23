@@ -10,14 +10,14 @@ def validate_time(time)
   end
 end
 
-def time_calculation(time)
+def time_calculation(addTime)
   day = 0
   cur_hour = 0
   cur_min = 0
   cur_sec = 0
 
-  time.length.times do |i|
-    temp_time = time[i]
+  addTime.length.times do |i|
+    temp_time = addTime[i]
 
     min_in_sec = (cur_sec + temp_time.sec.to_i) / 60
     cur_sec = (cur_sec + temp_time.sec.to_i) % 60
@@ -28,19 +28,26 @@ def time_calculation(time)
     day += (cur_hour + temp_time.hour.to_i + hour_in_min) / 24
     cur_hour = (cur_hour + temp_time.hour.to_i + hour_in_min) % 24 
   end
-  new_time = "#{day} day & #{cur_hour}:#{cur_min}:#{cur_sec}" 
+  new_time = "#{day} day & #{cur_hour}:#{cur_min}:#{cur_sec}"
 end
 
-puts "Enter the limit(Number of times you want to add TIME values) :"
-limit = gets.chomp.to_i
-addTime = []
-limit.times do |i|
-  puts "Enter the time to add(HH:MM:SS)"
-  addTime.push(Time.parse(gets.chomp))
-  time2 = addTime[i].strftime("%H:%M:%S")
-  validate_time(time2)
+def result(addTime)
+  final_time = time_calculation(addTime)
+  puts "Final Time is :#{final_time}" if validate_time(final_time)
 end
 
-final_time = time_calculation(addTime)
+def take_input
+  puts "Enter the limit(Number of times you want to add TIME values) :"
+  limit = gets.chomp.to_i
+  addTime = []
+  limit.times do |i|
+    puts "Enter the time to add(HH:MM:SS)"
+    addTime.push(Time.parse(gets.chomp))
+    time2 = addTime[i].strftime("%H:%M:%S")
+    validate_time(time2)
+  end
+  result(addTime)
+end
 
-puts "Final Time is :#{final_time}" if validate_time(final_time)
+take_input
+
