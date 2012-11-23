@@ -1,9 +1,16 @@
-require 'mathn'
-def prime(limit)
-  puts "The prime numbers in range of 1 to #{limit} are:"
-  2.step(limit.to_i) do |num|
-    puts num if Prime.prime?(num)
-  end	
+def prime(n)
+  num_array = Array.new(n, true)
+  num_array[0] = false
+  num_array.each_with_index do |num, i|
+    if num
+      print i+1, " "
+      (2*i+1).step(n, i+1) { |index|
+        num_array[index] = false
+      }
+    end
+  end
 end
 
+puts "Prime Numbers are"
 prime(10)
+puts
